@@ -87,6 +87,12 @@ Os emuladores serão iniciados e, com isso, você poderá acessar a interface do
 
 ```Vídeo de demonstração de todas as operações. P.S.: por algum motivo que eu não consegui descobrir, no vídeo não apareceu as opções dos selects de motivo e status.```
 
+
+
+https://github.com/user-attachments/assets/9e1790c0-4e9b-4b8a-8895-ef0c99c5f0cf
+
+
+
 ___
 
 [@lettycodes](https://www.github.com/lettycodes)
