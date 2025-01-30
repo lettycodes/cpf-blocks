@@ -1,5 +1,5 @@
 
-## CPF Block
+## CPF Blocks
 
 Essa aplicação permite que os usuários realizem as operações de CRUD (Create, Read, Update e Delete), integrando-se ao Firebase Firestore para armazenamento e recuperação dos dados.
 
