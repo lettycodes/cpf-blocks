@@ -1,0 +1,3 @@
+<app-header *ngIf="headerAppears "></app-header>
+<router-outlet (activate)="onActivate($event)"></router-outlet>
+<app-footer *ngIf="headerAppears"></app-footer>

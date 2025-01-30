@@ -1,0 +1,49 @@
+<div class="container-xl mt-5">
+    <div *ngIf="miniCursos">
+      <div class="row p-3 mt-5 myrow shadow-lg custom-row">
+        <div class="col-md-3">
+          <div class="logout position-absolute top-0 start-0">
+            <a  class="cor" routerLink="/candidato/follow-up/{{id}}" placement="end" ngbTooltip="Página de Progresso"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35 " fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+            </svg></a>
+          </div>
+          <div class="titulo" *ngFor="let mini of miniCursos">
+          <h2>{{mini.titulo}}</h2>
+          </div>
+          <hr />
+          <div id="list-example" class="list-group">
+            <button *ngFor="let mini of miniCursos" type="button" class="btn btn-outline-primary bt1 "  (click)="collapse.toggle()" 
+              [attr.aria-expanded]="!isCollapsedbt1" aria-controls="collapseExample">
+              Iniciar
+            </button>
+            <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedbt1">
+              <div  *ngFor="let mini of miniCursos">
+                <div *ngFor="let sub of mini.topicos">
+                  <a class="list-group-item list-group-item-action" (click)="onMostrarTopico(sub)">{{sub.subtitulo}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 pe-0">
+          <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example"
+            tabindex="0">
+            <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedbt1">
+              <div *ngIf="topicoAtual">
+                <h3>{{topicoAtual.subtitulo}}</h3>
+                <img *ngIf="topicoAtual.imagemURL !=''" [src]="topicoAtual.imagemURL">
+                <p [innerHTML]="convertHtmlToText(topicoAtual.texto)" style="text-align: start;"></p>
+                <div class="btn-proximo">
+                  <button *ngIf="topicoAtual" class="btn w-45 done" (click)="irParaProximoTopico()">
+                   Próximo
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div #collapse1="ngbCollapse" [(ngbCollapse)]="isCollapsedbt2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>

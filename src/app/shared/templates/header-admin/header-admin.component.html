@@ -1,0 +1,149 @@
+<div class="header-section header-sticky-bg-dark header-light sticky-header section" *ngIf="authService.user$ | async as user">
+  <div class="header-inner" style="z-index: 1;">
+    <div class="container position-relative">
+      <div class="row justify-content-between align-items-center">
+
+        <!-- Header Logo Start -->
+        <div class="col-auto">
+          <div class="header-logo">
+            <!-- Quando utilizado o [routerLink]="['/index']" igual na página inicial, o menu mobile buga -->
+            <a href="/index">
+              <img class="dark-logo" src="assets/images/logo/dark-logo.png" alt="SoulCode Logo">
+              <img class="light-logo" src="assets/images/logo/light-logo.png" alt="SoulCode Logo">
+            </a>
+          </div>
+        </div>
+        <!-- Header Logo End -->
+
+        <!-- Header Main Menu Start -->
+        <div class="col d-none d-xl-block position-static">
+          <nav class="site-main-menu menu-hover-1">
+            <ul>
+              <li class="has-children position-static">
+                <a [routerLink]="'/admin/processos'"><span class="menu-text">Processos, Tipos e Mini-Cursos</span></a>
+                <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+                <ul class="mega-menu" style="width: 380px; left: 200px;">
+                  <li>
+                    <ul>
+                      <li><a  [routerLink]="'/admin/processos'">Processos Seletivos Aguardando Início e Ativos</a></li>
+                      <li><a  [routerLink]="'/admin/processos/historico'">Histórico de Processos Seletivos</a></li>
+                      <li><a  [routerLink]="'/admin/dashboard'">Dashboard de Inscritos</a></li>
+                      <li><a  [routerLink]="'/admin/tipos-bootcamp'">Tipos de Bootcamp</a></li>
+                      <li><a  [routerLink]="'/admin/mini-cursos'">Mini Cursos</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="has-children position-static" *ngIf="user.type === 'Recruiter' || user.type === 'Admin'">
+                <a><span class="menu-text">Testes</span></a>
+                <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+                <ul class="mega-menu" style="width: 170px; left: 500px;">
+                  <li>
+                    <ul>
+                      <li><a [routerLink]="'/admin/teste-logico'"><span class="menu-text">Testes Lógicos</span></a></li>
+                      <li><a [routerLink]="'/admin/teste-tecnico'"><span class="menu-text">Testes Técnicos</span></a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+              </li>
+              <li *ngIf="user.type === 'Recruiter'">
+                <a [routerLink]="'/admin/cpf-block'"><span class="menu-text">Candidatos Bloqueados</span></a>
+              </li>
+              <li *ngIf="user.type === 'Admin'">
+                <a [routerLink]="'/admin/list-users'"><span class="menu-text">Usuários</span></a>
+              </li>
+              <li class="ms-5 position-absolute sair">
+                <a><span class="menu-text text-white" (click)="authService.logout()">Sair
+                    <i class="far fa-md fa-sign-in ms-2"></i></span></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Header Main Menu End -->
+
+        <!-- Header Right Start -->
+        <div class="col-auto">
+          <div class="header-right">
+            <div class="inner">
+              <div class="header-mobile-menu-toggle d-xl-none ml-sm-2">
+                <button class="toggle">
+                  <i class="icon-top"></i>
+                  <i class="icon-middle"></i>
+                  <i class="icon-bottom"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Header Right End -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Header Section End -->
+
+<!-- Mobile menu -->
+<div id="site-main-mobile-menu" class="site-main-mobile-menu" *ngIf="authService.user$ | async as user">
+  <div class="site-main-mobile-menu-inner">
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-logo">
+        <a href="index.html"><img src="assets/images/logo/dark-logo.png" alt=""></a>
+      </div>
+      <div class="mobile-menu-close">
+        <button class="toggle">
+          <i class="icon-top"></i>
+          <i class="icon-bottom"></i>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu-content">
+      <nav class="site-mobile-menu">
+        <ul>
+          <li class="has-children position-static" *ngIf="user.type === 'Admin'">
+            <a href="/admin/processos"><span class="menu-text">Processos, Tipos e Mini-Cursos</span></a>
+            <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+
+            <ul class="mega-menu">
+              <li>
+                <ul>
+                  <li><a href="/admin/processos"><span class="menu-text">Processos Seletivos Aguardando Início e Ativos</span></a></li>
+                  <li><a href="/admin/processos/historico"><span class="menu-text">Histórico de Processos Seletivos</span></a></li>
+                  <li><a href="/admin/tipos-bootcamp"><span class="menu-text">Tipos de Bootcamp</span></a></li>
+                  <li><a href="/admin/mini-cursos"><span class="menu-text">Mini Cursos</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="has-children position-static" *ngIf="user.type === 'Recruiter' || user.type === 'Admin'">
+            <a href="/admin/teste-logico"><span class="menu-text">Testes</span></a>
+            <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+
+            <ul class="mega-menu">
+              <li>
+                <ul>
+                  <li><a href="/admin/teste-logico"><span class="menu-text">Testes Lógicos</span></a></li>
+                  <li><a href="#"><span class="menu-text">Testes Técnicos</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li *ngIf="user.type === 'Recruiter' || user.type === 'Admin'">
+            <a href="#"><span class="menu-text">Lista de Bloqueio</span></a>
+          </li>
+          <li *ngIf="user.type === 'Recruiter' || user.type === 'Admin'">
+            <a href="/admin/cpf-block"><span class="menu-text">Candidatos Bloqueados</span></a>
+          </li>
+          <li *ngIf="user.type === 'Admin'">
+            <a [routerLink]="'/admin/list-users'"><span class="menu-text">Lista de Funcionários</span></a>
+          </li>
+          <li>
+            <a><span class="menu-text" (click)="authService.logout()">Sair
+                <i class="far fa-md fa-sign-in ms-2"></i></span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

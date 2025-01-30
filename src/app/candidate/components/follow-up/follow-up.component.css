@@ -1,0 +1,120 @@
+h2 {
+    color: #3f3a64;
+  }
+  
+  .title {
+    margin-top: 8%;
+    text-align: center;
+  }
+  
+  .title2 {
+    color: #ffdd00;
+  }
+  
+  .text {
+    color: white;
+  }
+  
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .caixa1,
+  .caixa2,
+  .caixa3,
+  .caixa4,
+  .caixa5 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 80px 15px;
+    width: 230px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #0f637a;
+    text-align: center;
+  }
+  
+  .desabitado {
+    opacity: 0.5;
+  }
+  
+  .content-wrap {
+    margin: 2px;
+    min-width: 210px;
+    padding: 5px;
+  }
+  
+  .miniCurso {
+    color: #ffdd00;
+    font-size: 15px;
+  }
+  
+  .miniCurso:hover {
+    color: #65b3f3;
+    font-size: 15px;
+  }
+  
+  .bi-arrow-up-circle,
+  .bi-hourglass-split,
+  .bi-people-fill {
+    color: #ffdd00;
+  }
+  
+  .ht-gradation.style-01 .wave-pulse::before,
+  .ht-gradation.style-01 .wave-pulse::after {
+    opacity: 0;
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #080808e8;
+    animation: pulse 1s infinite;
+  }
+  
+  .item:hover .circle {
+    color: #ffffff;
+    background: #ffdd00;
+  }
+  
+  .itemEmUso .circle {
+    color: #ffffff;
+    background: #0f637a;
+  }
+  
+  .itemConcluido .circle {
+    color: #ffffff;
+    background: #0c611b;
+  }
+  
+  @media (max-width: 768px) {
+    .caixa1,
+    .caixa2,
+    .caixa3,
+    .caixa4,
+    .caixa5 {
+      margin: 20px;
+    }
+  }
+  
+  .logout {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    color: #0f637a;
+    width: 60px;
+    padding: 20px;
+  }
+  .cor:hover {
+    color: #ffdd00;
+    margin-bottom: 0;
+  }
+  

@@ -1,0 +1,59 @@
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <form class="login100-form" [formGroup]="sigInForm" (ngSubmit)="signIn()">
+          <div class="login100-pic ">
+            <img src='/assets/img/soulcode.png' alt="IMG">
+          </div>
+          <span class="login100-form-title">
+            Conecte-se
+          </span>
+          <div class="wrap-input100">
+            <input class="input100" type="text" name="email" placeholder="Email" formControlName="email" required>
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="wrap-input100">
+            <input class="input100" placeholder="Password" formControlName="password" type="password" required>
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="checkbox100">
+            <span>
+              <input name="remember" type="checkbox" value="yes" formControlName="remember"> Remember me
+            </span>
+          </div>
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn" [disabled]=" sigInForm.invalid">
+              Login
+            </button>
+          </div>
+          <div class="text-center pt-3">
+            <a (click)="open(content)">Esqueceu a senha?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Recuperação de senha</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <form [formGroup]="forgotForm" (ngSubmit)="forgot()">
+      <div class="modal-body">
+        <h5>Digite seu e-mail e clique em "Enviar"</h5>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="E-mail" formControlName="email">
+          </div>
+        
+        </div>
+        <div class="modal-footer form-group">
+          <button type="submit" class="btn btn-outline-dark" [disabled]="forgotForm.invalid" (click)="c('Save click')">Enviar</button>
+        </div>
+    </form>
+  </ng-template>

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "cpf-block",
+    "cpf-block": "cpf-block"
+  },
+  "targets": {},
+  "etags": {}
+}

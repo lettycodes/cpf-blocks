@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h2 class="modal-title tituloForm text-primary">Detalhes do (a) candidato (a)</h2>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+
+<div class="modal-body text-white m-0 text-left">
+  <strong>CPF:</strong> {{ this.formatCpf(dados.cpf) }} <br>
+  <strong>Email:</strong> {{ dados.email }} <br>
+  <strong>Nome completo:</strong> {{ dados.nomeCompleto }} <br>
+  <strong>Motivo:</strong> {{ dados.motivo }} <br>
+  <strong>Comentário:</strong> {{ dados.comentario }} <br>
+  <strong>Status:</strong> {{ dados.status }}
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary botao-cancelar"
+      (click)="activeModal.dismiss('Close click')">Fechar</button>
+</div>

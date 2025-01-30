@@ -1,0 +1,88 @@
+.titulo {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 3vh;
+    font-size: 24px;
+}
+
+.subtitulo {
+    margin-left: -8px;
+    margin-top: 2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #8C89A2;
+}
+
+.card {
+    height: 25rem;
+    background-color: #0f637a;
+}
+
+
+.card-subtitle {
+    color: white;
+}
+
+.btn {
+    height: 2rem;
+}
+
+.botao-detalhes-process {
+    width: 100%;
+    margin: 1vh 0;
+}
+
+.botao-editar-process {
+    width: 47%;
+}
+
+.botao-apagar-process {
+    width: 47%;
+}
+
+.botaoAdd {
+    background-color: #ffd900;
+    color: black;
+    border: none;
+    position: fixed;
+    bottom: 130px;
+}
+
+.botaoAdd:hover {
+    background-color: #dcbb00;
+}
+
+.spinner-border {
+    margin-top: 10%;
+}
+
+@media (min-width: 1200px) {
+    .superWrapper {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 2000px) {
+    .botaoAdd {
+        right: 400px;
+    }
+}
+
+@media (min-width: 2400px) {
+    .botaoAdd {
+        right: 600px;
+    }
+}
+
+@media (min-width: 2800px) {
+    .botaoAdd {
+        right: 800px;
+    }
+}
+
+@media (min-width: 3100px) {
+    .botaoAdd {
+        right: 1000px;
+    }
+}

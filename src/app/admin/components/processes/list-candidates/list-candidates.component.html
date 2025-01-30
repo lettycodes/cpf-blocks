@@ -1,0 +1,101 @@
+<div class="container">
+    <div>
+        <div>
+
+            <div class="table-responsive-container-fluid">
+                <h1 style="text-align: center; font-size: 24px; margin-top: 10%">Candidatos</h1>
+
+                <label for="typeahead-basic">Pesquisar:</label>
+                <input id="typeahead-basic" type="text" placeholder="Pesquise por: email, nome ou id "
+                    class="form-control" [(ngModel)]="textSearch" (ngModelChange)=" candidateSearch()" />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr style="text-align: center ;">
+                                <th [class.active]="order === 'nomeCompleto'" (click)="setOrder('nomeCompleto')">Nome
+                                </th>
+                                <th [class.active]="order === 'email'" (click)="setOrder('email')">Email</th>
+                                <th [class.active]="order === 'statusJornada'" (click)="setOrder('statusJornada')">Etapa
+                                    Atual</th>
+                                <th [class.active]="order === 'detalhes'" (click)="setOrder('detalhes')">Detalhes </th>
+                                <th [class.active]="order === 'pitch'" (click)="setOrder('status')">Pitch</th>
+                                <th [class.active]="order === 'acoes'" (click)="setOrder('acoes')">Ações</th>
+                                <th [class.active]="order === 'statusFinal'" (click)="setOrder('statusFinal')">Status
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center ;">
+                            <tr
+                                *ngFor="let inscricao of inscricoes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize | orderBy: order:reverse:caseInsensitive">
+                                <td>{{inscricao.nomeCompleto}}</td>
+                                <td>{{inscricao.email }}</td>
+                                <td>
+                                    {{inscricao.statusJornada}}
+                                </td>
+                                <td>
+                                    <i (click)="candidateDetail(inscricao)" style="cursor: pointer;"
+                                        class="far fa-user-circle" aria-hidden="true"></i>
+                                </td>
+                                <td *ngIf="inscricao.pitchURL !== ''; else outroPitch ">
+                                    <a target="_blank" href="{{inscricao.pitchURL}}"><i class="far fa-download"
+                                            aria-hidden="true"></i></a>
+                                </td>
+                                <ng-template #outroPitch>
+                                    <td>
+                                        <a title="Não possui Pitch"><i class="far fa-download"
+                                                aria-hidden="true"></i></a>
+                                    </td>
+                                </ng-template>
+                                <td>
+                                    <i class="far fa-upload" style="cursor: pointer;"
+                                        (click)=" openActions(content, inscricao)" aria-hidden="true"></i>
+                                </td>
+                                <td>
+                                    {{inscricao.statusFinal}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-between p-2">
+                    <ngb-pagination [collectionSize]="inscricoes.length" [(page)]="page" [pageSize]="pageSize"
+                        (pageChange)="refreshBlock()">
+                    </ngb-pagination>
+
+                    <select class="form-select" style="width: auto" [(ngModel)]="pageSize"
+                        (ngModelChange)="refreshBlock()">
+                        <option *ngFor="let item of listPage" [ngValue]="item">
+                            {{ item }} - itens por página
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <!--modal-observações-->
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h2 class="modal-title tituloForm text-primary">Ações sobre o candidato</h2>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <form [formGroup]="actionsForm" style="background-color: #0f637a;">
+            <div class="container-fluid textarea-wrapper">
+                <textarea class="textArea text-white" [(ngModel)]="candidateModal.comentario"
+                    formControlName="comentario" cols="10" rows="10" placeholder="Digite seu comentário">Escreva aqui</textarea>
+            </div>
+        </form>
+        <div class="modal-body">
+            <div class="submitWrapper">
+                <button class="btn btn-primary " (click)="changeStatus('Aprovado')" style="margin: 15px;">
+                    Aprovar
+                </button>
+                <button class="btn btn-outline-primary " (click)="changeStatus('Reprovado')" style="margin: 15px;">
+                    Reprovar
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

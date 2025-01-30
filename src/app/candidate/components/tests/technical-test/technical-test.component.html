@@ -1,0 +1,192 @@
+<div class="logout position-absolute top-0 start-0">
+    <a  class="cor" routerLink="/candidato/follow-up/{{id}}" placement="end" ngbTooltip="Página de Progresso"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35 " fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg></a>
+</div>
+<div class="section pt-5 bg-pattern fix overflow-hidden">
+    <div class="container" *ngIf="candidato && tiposBootcamp; else loading">
+        <div class="container overflow-hidden" style="margin-bottom: 80px">
+
+            <!-- Start Título -->
+            <div style="text-align: center; margin-bottom: 50px">
+                <h4 style="color: #3f3a64; font-size: 26px">Teste Técnico</h4>
+            </div>
+            <!-- End Título -->
+
+            <div class="row gy-5">
+
+                <!-- Start Resumo -->
+                <div class="col-4 container-resumo">
+                    <div class="p-3 border rounded">
+                        <div class="container-fluid">
+                            <p class="fs-lg" style="font-size: 16px">
+                                <span style="color: #3f3a64; font-weight: 700;">Resumo</span><br>
+                                • Etapa: Teste Técnico<br>
+                                • Nº de Questões: 10
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Resumo -->
+
+                <div class="col-8 container-questoes">
+                    <div class="p-3 border rounded">
+
+                        <!-- Start Instruções -->
+                        <div *ngIf="candidato.questaoAtualTecnico == -1" class="container-fluid">
+                            <div class="text-left mb-3">
+                                <span style="color: #3f3a64; font-size: 20px;">
+                                    <svg style="color: #3f3a64" xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                    </svg> <strong> Instruções</strong><br>
+                                </span>
+                            </div>
+
+                            <ul class="text-left fs-lg" style="font-size: 18px; list-style: none; padding: 0">
+                                <li class="mt-30">Você precisará responder 10 questões de única ou múltipla escolha.
+                                </li>
+                                <li class="mt-30">É necessario acertar no mínimo 70% das questões para desbloquear a
+                                    próxima etapa.</li>
+                                <li class="mt-30">Depois de responder uma questão, você não poderá
+                                    voltar atrás.</li>
+                                <li class="mt-30" style="font-weight: 700">Boa prova!</li>
+                            </ul>
+
+                            <div class="button-next">
+                                <button class="btn btn-primary" (click)="iniciarTeste()">
+                                    Iniciar
+                                </button>
+                            </div>
+                        </div>
+                        <!-- End Instruções -->
+
+                        <!-- Start Questões -->
+                        <div *ngIf="candidato.questaoAtualTecnico >= 0 && candidato.questaoAtualTecnico < 10"
+                            class="container-fluid">
+                            <div class="text-left mb-1">
+                                <span style="color: #3f3a64; font-size: 20px;">
+                                    <svg style="color: #3f3a64" xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                                        <path
+                                            d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                        <path
+                                            d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                    </svg> <strong> Questão {{ candidato.questaoAtualTecnico + 1 }}</strong><br>
+                                </span>
+                            </div>
+                            <form [formGroup]="form" (ngSubmit)="proximaQuestao(0)"
+                                *ngIf="candidato?.questoesTecnico; else loading">
+                                <div class="text-left">
+                                    <span class="fs-lg mb-1" style="font-size: 17px">
+                                        {{ candidato?.questoesTecnico[0]?.question }}
+                                    </span>
+                                    <p class="sobre-alt mb-30"
+                                        *ngIf="candidato?.questoesTecnico[0]?.type === 'checkbox'">
+                                        *Essa questão é de múltipla escolha
+                                    </p>
+                                    <p class="sobre-alt mb-30" *ngIf="candidato?.questoesTecnico[0]?.type === 'radio'">
+                                        *Selecione apenas uma alternativa
+                                    </p>
+                                </div>
+                                <div class="form-check selector-alt border mb-3" for="flexCheckChecked" *ngFor="
+                                let alt of candidato?.questoesTecnico[0]?.alternatives
+                              ">
+                                    <label class="form-check-label label-alt">
+                                        <div>
+                                            <input class="form-check-input input-alt"
+                                                type="{{ candidato?.questoesTecnico[0]?.type }}" name="flexRadio"
+                                                [value]="alt" id="flexCheckChecked" (change)="
+                                    checkResp($event, candidato?.questoesTecnico[0]?.type)
+                                  " required />
+                                        </div>
+                                        <div>
+                                            {{ alt }}
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="button-next" *ngIf="candidato?.questoesTecnico.length > 1">
+                                    <button class="btn button-disabled" [disabled]="form.invalid">
+                                        Próxima
+                                    </button>
+                                </div>
+                                <div class="button-next" *ngIf="candidato?.questaoAtualTecnico == 9">
+                                    <button class="btn button-disabled" [disabled]="form.invalid" (click)="getMedia(candidato)">Finalizar</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End Questões -->
+
+                        <!-- Start Feedback -->
+                        <div *ngIf="candidato.questaoAtualTecnico >= 10" class="container-fluid">
+                            <div class="mb-3">
+                                <span class="text-left" style="color: #3f3a64; font-size: 20px;">
+                                    <svg style="color: #3f3a64" xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                    </svg> <strong> Resultado</strong><br>
+                                </span>
+                            </div>
+
+                            <div class="text-center">
+                                <span *ngIf="candidato.mediaTecnico || candidato.mediaTecnico == 0; else loading"
+                                    class="fs-lg" style="font-size: 18px">
+                                    Você acertou <strong>{{ candidato.mediaTecnico*100/10 }}%</strong> das questões!
+                                </span>
+                            </div>
+
+                            <div class="mt-30 text-center">
+                                <span *ngIf="candidato.mediaTecnico >= 7" class="fs-lg" style="font-size: 18px">
+                                    <svg style="color: #5de8a0" xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                    </svg> Parabéns, você poderá continuar para a próxima etapa!
+                                </span>
+                            </div>
+
+                            <div class="mt-30 text-center">
+                                <span *ngIf="candidato.mediaTecnico < 7" class="fs-lg" style="font-size: 18px">
+                                    <svg style="color: #e85d5d" xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                    </svg> Você não atingiu a pontuação necessária para pular de etapa.
+                                </span>
+                            </div>
+
+                            <div class="mt-30 text-center">
+                                <span
+                                    *ngIf="candidato.mediaTecnico < 7 && candidato.tentativasTecnico >= tiposBootcamp.limiteTentativas"
+                                    class="fs-lg mt-3" style="font-size: 18px; font-weight: 700">
+                                    ATENÇÃO: Você atingiu o limite máximo de tentativas para este curso!
+                                </span>
+                            </div>
+
+                            <div class="button-next">
+                                <button class="btn btn-primary" (click)="continuar()"
+                                    *ngIf="candidato.mediaTecnico >= 7">
+                                    Continuar
+                                </button>
+                                <button class="btn btn-primary" (click)="refazer()"
+                                    *ngIf="candidato.mediaTecnico < 7 && candidato.tentativasTecnico < tiposBootcamp.limiteTentativas">
+                                    Refazer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Feedback -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <app-loader></app-loader>
+</ng-template>

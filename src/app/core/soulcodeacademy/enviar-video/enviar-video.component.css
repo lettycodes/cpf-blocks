@@ -1,0 +1,13 @@
+.logout {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  color: #0f637a;
+  width: 60px;
+  padding: 15px;
+  margin-left: -4.2px;
+}
+.cor:hover {
+  color: #ffdd00;
+  margin-bottom: 0;
+}

@@ -1,0 +1,632 @@
+<div class="logout w-100 d-flex justify-content-between">
+    <a  class="cor" routerLink="/candidato/painel-candidato" placement="end" ngbTooltip="Página de inscrições"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35 " fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg></a>
+    <div *ngIf="authService.candidate$ | async as user" class="text-dark">
+      <span class="mx-5">Bem-vindo, {{user.displayName}}</span>
+      <a (click)="logout()" placement="start" ngbTooltip="Clique para sair!"> <svg  xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+      </svg></a>
+    </div>
+</div>
+
+  <div class="title"><h2>Acompanhe seu progresso</h2></div>
+  <section *ngIf="inscricao" class="flex">
+    <div>
+      <div class="caixa1 desabitado" *ngIf="inscricao.progressoJornada < 0; else caixa1">
+        <h5 class="title3">Teste de Lógica</h5>
+        <p class="text">
+          Avalia a habilidade do indivíduo de raciocinar de maneira lógica, ou seja,
+          que faz sentido
+        </p>
+        <div>
+         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+          </svg>
+        </div>
+      </div>
+      <ng-template #caixa1>
+       <div class="caixa1">
+        <a routerLink="/candidato/teste-de-logica/{{id}}"
+        ><h5 class="title2">Teste de Lógica</h5></a>
+      <p class="text">
+        Avalia a habilidade do indivíduo de raciocinar de maneira lógica, ou seja,
+        que faz sentido
+      </p>
+      <div>
+        <a routerLink="/candidato/teste-de-logica/{{id}}"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+        </svg></a>
+      </div>
+       </div>
+    </ng-template> 
+    </div>
+  
+    <div>
+      <div class="caixa2 desabitado" *ngIf="inscricao.progressoJornada < 2; else caixa2">
+          <h5 class="title2">Teste Técnico</h5>
+          <p class="text">
+            Conhecido também como teste de domínio, basicamente é uma avaliação que
+            tem como objetivo principal compreender as habilidades técnicas
+          </p>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+            </svg>
+          </div>
+        </div>
+  
+          <ng-template #caixa2>
+            <div class="caixa2">
+            <a routerLink="/candidato/teste-tecnico/{{id}}"><h5 class="title2">Teste Técnico</h5></a>
+            <p class="text">
+             Antes de acessar as perguntas, faça o mini-curso (não é obrigatório).
+             <a class="miniCurso" routerLink="/candidato/minicurso/{{id}}">MINI-CURSO</a>
+            </p>
+            <div>
+              <a routerLink="/candidato/teste-tecnico/{{id}}"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+              </svg></a>
+            </div>
+          </div>
+          </ng-template>
+      </div>
+  
+      <div>
+        <div class="caixa3 desabitado" *ngIf="inscricao.progressoJornada < 3; else caixa3">
+         <h5 class="title2">Envio do Vídeo</h5>
+          <p class="text">
+            É uma apresentação sumária de até 2 minutos e 30 segundos com objetivo de despertar o
+            interesse da outra parte
+          </p>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+            </svg>
+          </div>
+        </div>
+  
+        <ng-template #caixa3>
+          <div class="caixa3">
+              <a routerLink="/candidato/enviar-video-{{curso}}/{{id}}"><h5 class="title2">Envio do Vídeo</h5></a>
+              <p class="text">
+                É uma apresentação sumária de até 2 minutos e 30 segundos com objetivo de despertar o
+                interesse da outra parte
+              </p>
+              <div>
+                <a routerLink="/candidato/enviar-video-{{curso}}/{{id}}"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                </svg></a>
+              </div>
+            </div>
+        </ng-template>
+      </div>
+  
+  <div>
+    <div class="caixa4 desabitado" *ngIf="inscricao.progressoJornada < 4; else caixa4">
+      <h5 class="title2">Dinâmica em Grupo</h5>
+      <p class="text">
+        Permitem avaliar o comportamento dos candidatos, individualmente e em
+        interação com os demais participantes.
+      </p>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+          <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+        </svg>
+      </div>
+    </div>
+   
+    <ng-template #caixa4>
+    <div class="caixa4">
+      <h5 class="title2">Dinâmica em Grupo</h5>
+      <p class="text">
+        Permitem avaliar o comportamento dos candidatos, individualmente e em
+        interação com os demais participantes.
+      </p>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+          <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+        </svg>
+      </div>
+   </div>
+  </ng-template>
+  </div>
+  
+  <div>
+    <div class="caixa5 desabitado" *ngIf="inscricao.progressoJornada < 5; else caixa5">
+      <h5 class="title2">Resultado</h5>
+      <p class="text">
+        Em até 5 dias, você receberá o resultado de toda a sua jornada.
+      </p>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">
+          <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z"/>
+        </svg>
+      </div>
+    </div>
+  
+    <ng-template #caixa5>
+      <div class="caixa5">
+        <h5 class="title2">Resultado</h5>
+        <p class="text">
+          Em até 5 dias, você receberá o resultado de toda a sua jornada.
+        </p>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">
+            <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z"/>
+          </svg>
+        </div>
+      </div>
+    </ng-template>
+  </div> 
+  </section>
+  
+  
+  <div *ngIf="inscricao">
+    <div class="gradation-process-section section py-5 bg-lighter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ht-gradation style-01">
+              <div
+                *ngIf="inscricao.progressoJornada < 1"
+                class="item item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">1</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Teste de Lógica</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Serão selecionadas 10 questões de lógica, com pontuação
+                      mínima de 6 pontos para poder passar para a próxima etapa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada == 1"
+                class="itemEmUso item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">1</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Teste de Lógica</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Serão selecionadas 10 questões de lógica, com pontuação
+                      mínima de 6 pontos para poder passar para a próxima etapa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada > 1"
+                class="itemConcluido item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-file-earmark-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+                      />
+                      <path
+                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"
+                      />
+                    </svg>
+                  </h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Teste de Lógica</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Teste concluído!
+                    </p>
+                  </div>
+                </div>
+              </div>
+  
+              <div
+                *ngIf="inscricao.progressoJornada < 2"
+                class="item item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">2</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Teste Técnico</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Nesta etapa, você responderá mais 10 questões voltadas ao
+                      curso escolhido na hora da inscrição.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada == 2"
+                class="itemEmUso item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">2</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Teste Técnico</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Nesta etapa, você responderá mais 10 questões voltadas ao
+                      curso escolhido na hora da inscrição.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada > 2"
+                class="itemConcluido item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-file-earmark-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+                      />
+                      <path
+                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"
+                      />
+                    </svg>
+                  </h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Teste Técnico</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Teste conluído!
+                    </p>
+                  </div>
+                </div>
+              </div>
+  
+              <div
+                *ngIf="inscricao.progressoJornada < 3"
+                class="item item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">3</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Vídeo</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Você poderá enviar um vídeo para nós com até 2 minutos e 30 segundos nos
+                      contando um pouco sobre você, e o porque da escolha do
+                      curso.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada == 3"
+                class="itemEmUso item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">3</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Vídeo</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Você poderá enviar um vídeo para nós com até 2 minutos e 30 segundos nos
+                      contando um pouco sobre você, e o porque da escolha do
+                      curso.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada > 3"
+                class="itemConcluido item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-file-earmark-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+                      />
+                      <path
+                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"
+                      />
+                    </svg>
+                  </h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Vídeo</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Vídeo enviado!
+                    </p>
+                  </div>
+                </div>
+              </div>
+  
+              <div
+                *ngIf="inscricao.progressoJornada < 4"
+                class="item item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">4</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Dinâmica em Grupo</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Serão realizadas atividades em grupo em salas temáticas de
+                      forma divertida e gameficada.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada == 4"
+                class="itemEmUso item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">4</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Dinâmica em Grupo</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Serão realizadas atividades em grupo em salas temáticas de
+                      forma divertida e gameficada.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada > 4"
+                class="itemConcluido item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-file-earmark-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+                      />
+                      <path
+                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"
+                      />
+                    </svg>
+                  </h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Dinâmica em Grupo</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Etapa da dinâmica concluída!
+                    </p>
+                  </div>
+                </div>
+              </div>
+  
+              <div
+                *ngIf="inscricao.progressoJornada < 5"
+                class="item item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">5</h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Resultado</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Parabéns pela sua caminhada até aqui! Agora é aguardar o
+                      resultado da sua jornada e torcer para ser um soulcoder. Boa
+                      Sorte!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="inscricao.progressoJornada == 5"
+                class="itemConcluido item-1"
+                data-aos="fade-up"
+              >
+                <div class="circle-wrap">
+                  <div class="mask">
+                    <div class="wave-pulse wave-pulse-1"></div>
+                    <div class="wave-pulse wave-pulse-2"></div>
+                    <div class="wave-pulse wave-pulse-3"></div>
+                  </div>
+  
+                  <h6 class="circle">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-file-earmark-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+                      />
+                      <path
+                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"
+                      />
+                    </svg>
+                  </h6>
+                </div>
+  
+                <div class="content-wrap">
+                  <h5 class="heading">Resultado</h5>
+  
+                  <div class="text1">
+                    <p>
+                      Parabéns pela sua caminhada até aqui! Agora é aguardar o
+                      resultado da sua jornada e torcer para ser um soulcoder. Boa
+                      Sorte!
+                    </p>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,50 @@
+<div class="superWrapper" *ngIf="authService.user$ | async  as user">
+  <div class="container-fluid">
+      <h2 class="titulo">Tipos de Bootcamp</h2>
+      <div class="row">
+          <div class="col d-flex justify-content-center px-1" *ngFor="let tipoBootcamp of tiposBootcamp">
+              <div class="card mb-3 mt-3" style="width: 18rem;">
+                  <div class="card-body d-flex flex-column flex-wrap justify-content-between text-white">
+                      <div class="text-center">
+                          <h5 class="card-title text-primary">{{tipoBootcamp.tipo}}</h5>
+                      </div>
+                      <div style="height: 147px;">
+                          <span style="font-size: 14px; display: block;">
+                              <i class="fas fa-fingerprint"></i>
+                              ID do Teachable: <strong>{{tipoBootcamp.idTeachable}}</strong>
+                          </span>
+
+                          <span style="font-size: 14px; display: block;">
+                            <i class="fas fa-computer-classic"></i>
+                            Mini-Curso: <strong>{{tipoBootcamp.miniCurso}}</strong>
+                        </span>
+                          
+                          <span style="font-size: 14px; display: block;">
+                              <i class="fas fa-exclamation-triangle"></i>
+                              O candidato poderá falhar nos testes <strong>{{tipoBootcamp.limiteTentativas}}</strong> vezes até ser reprovado
+                              automaticamente
+                          </span>
+                      </div>
+                      <div class="acoesWrapper">
+                              <div class="d-flex justify-content-between" *ngIf="user.type === 'Admin'">
+                                  <a (click)="openEdit(tipoBootcamp)"
+                                      class="btn btn-primary btn-sm botao-editar">Editar</a>
+                                  <a (click)="openDelete(tipoBootcamp.id, tipoBootcamp.tipo)"
+                                      class="btn btn-danger btn-sm botao-apagar">Apagar</a>
+                              </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="text-center">
+      <div class="spinner-border" role="status" *ngIf="loading">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+  <div class="fab-wrapper" *ngIf="user.type === 'Admin'">
+      <button (click)="openCreate()" class="scroll-top show botaoAdd"
+          style="font-size: 28pt; padding-top: 3px;">+</button>
+  </div>

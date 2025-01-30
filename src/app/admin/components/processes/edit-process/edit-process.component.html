@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h2 class="modal-title tituloForm text-primary">Editar Processo</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <form class="formCreate" [formGroup]="this.editProcessForm">
+        <div class="inputWrapper">
+            <label class="text-white" for="turma">Número do Bootcamp</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="nome-turma">BC</span>
+                <input id="turma" placeholder="Digite o número do BC" formControlName="turma" type="text"
+                class="input-field col s12" />
+            </div>
+            <small class="text-danger" *ngIf="turma?.touched && turma?.invalid || returnIfTurmaAlreadyExists()">
+                <span *ngIf="turma?.hasError('required')">A turma é obrigatória</span>
+                <span *ngIf="returnIfTurmaAlreadyExists()">A turma {{turma.value}} já existe</span>
+            </small>
+        </div>
+
+        <div class="inputWrapper">
+            <label class="text-white" for="tipo">Tipo de Bootcamp</label>
+            <select id="tipo" class="form-select" formControlName="tipo">
+                <option value="" disabled>Selecione um tipo</option>
+                <option *ngFor="let tipo of tiposBootcamp" [ngValue]="tipo.tipo">
+                    {{ tipo.tipo }}
+                </option>
+            </select>
+            <small class="text-danger" *ngIf="tipo?.touched && tipo?.invalid">
+                <span *ngIf="tipo?.hasError('required')">O tipo do Bootcamp é obrigatório</span>
+            </small>
+        </div>
+
+        <div class="inputWrapper">
+            <label class="text-white" for="inicioInscricoes">Abertura das Inscrições</label>
+            <input id="inicioInscricoes" placeholder="Data de início das Inscrições" formControlName="inicioInscricoes"
+                type="date" class="input-field col s12" />
+            <small class="text-danger"
+                *ngIf="inicioInscricoes?.touched && inicioInscricoes?.invalid || returnIfAnotherProcessIsActive()">
+                <span *ngIf="inicioInscricoes?.hasError('required')">A data de término é obrigatória</span>
+                <span *ngIf="returnIfAnotherProcessIsActive()">Já existe outro processo ativo do tipo
+                    {{this.tipo.value}}</span>
+            </small>
+        </div>
+
+        <div class="inputWrapper">
+            <label class="text-white" for="terminoInscricoes">Término das Inscrições</label>
+            <input id="terminoInscricoes" placeholder="Data de término das Inscrições"
+                formControlName="terminoInscricoes" type="date" class="input-field col s12" />
+            <small class="text-danger"
+                *ngIf="terminoInscricoes?.touched && terminoInscricoes?.invalid || returnIfDateIsIncompatible(inicioInscricoes.value, terminoInscricoes.value)">
+                <span *ngIf="terminoInscricoes?.hasError('required')">A data de término das inscrições é
+                    obrigatória</span>
+                <span *ngIf="returnIfDateIsIncompatible(inicioInscricoes.value, terminoInscricoes.value)">A data de
+                    término das insrições deve ser posterior à data de abertura</span>
+            </small>
+        </div>
+
+        <div class="inputWrapper">
+            <label class="text-white" for="inicioBootcamp">Início do Bootcamp</label>
+            <input id="inicioBootcamp" placeholder="Data de início do Bootcamp" formControlName="inicioBootcamp"
+                type="date" class="input-field col s12" />
+            <small class="text-danger"
+                *ngIf="inicioBootcamp?.touched && inicioBootcamp?.invalid || returnIfDateIsIncompatible(terminoInscricoes.value, inicioBootcamp.value)">
+                <span *ngIf="inicioBootcamp?.hasError('required')">A data de início é obrigatória</span>
+                <span *ngIf="returnIfDateIsIncompatible(terminoInscricoes.value, inicioBootcamp.value)">A data de início
+                    do Bootcamp deve ser posterior à data de término das inscrições</span>
+            </small>
+        </div>
+
+        <div class="submitWrapper">
+            <button class="btn btn-primary submit" (click)="onSubmit()"
+                [disabled]="editProcessForm.invalid || returnIfAnotherProcessIsActive() || returnIfTurmaAlreadyExists() || returnIfDateIsIncompatible(inicioInscricoes.value, terminoInscricoes.value) || returnIfDateIsIncompatible(terminoInscricoes.value, inicioBootcamp.value)">
+                Editar Processo
+            </button>
+        </div>
+    </form>
+</div>

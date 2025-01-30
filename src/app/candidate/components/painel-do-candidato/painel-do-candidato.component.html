@@ -1,0 +1,48 @@
+<div class="logout position-absolute top-0 end-0">
+    <a (click)="logout()" placement="start" ngbTooltip="Clique para sair!"> <svg  xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+    </svg></a>
+  </div>
+  <div class="title">
+   
+    <h2>Painel de inscrições</h2>
+  
+  <div *ngIf="teste"> {{teste[0].nomeCompleto}}</div>
+  </div>
+  
+  <div class="marg flex container-fluid  overflow-hidden " *ngIf="teste ;else loading">
+    <div *ngFor="let item of teste" class="caixa row gy-5">
+      <div class="insideCard ">
+        <div>
+          <h5 class="title2">{{ item.tipo }}</h5>
+          <hr class="title2" />
+        </div>
+  
+        <div>
+          <h6 class="text">{{ item.email }}</h6>
+          <p class="text">
+            Inscrição realizada em:
+            {{ item.dataInscricao.toDate() | date: "dd/MM/yyyy" }}
+          </p>
+          <p class="text">
+            <strong>Status inscrição:</strong> {{ item.statusJornada }}
+          </p>
+  
+          <p class="text"><strong> CPF: </strong> {{ item.cpf }}</p>
+        </div>
+  
+        <div class="botao">
+          <button   class="btn btn-primary" (click)="onclick(item.uid)">
+            <span> Entrar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+  <app-loader></app-loader>
+  
+  </ng-template>
+  
